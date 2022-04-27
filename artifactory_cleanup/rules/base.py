@@ -205,7 +205,7 @@ class CleanupPolicy(object):
             print("DESTROY MODE - delete {}".format(artifact_path))
             delete_url = "{}/{}".format(self.artifactory_url, artifact_path)
             r = self.artifactory_session.delete(delete_url)
-            if r.status == 404:
+            if r.status_code == 404:
                 print("DEBUG - delete 404 - skipping {}".format(artifact_path))
             else:
                 r.raise_for_status()
